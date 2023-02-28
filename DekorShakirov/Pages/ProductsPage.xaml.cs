@@ -114,7 +114,7 @@ namespace DekorShakirov.Pages
             {
                 try
                 {
-                    //clientsInPage.Add(Products[i]);
+                    //productsInPage.Add(Products[i]);
                 }
                 catch (Exception)
                 {
