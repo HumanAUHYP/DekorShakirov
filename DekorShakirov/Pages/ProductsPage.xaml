@@ -78,7 +78,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Grid Grid.Row="2" Background="#FFFFFFE1">
+        <Grid Grid.Row="2" Background="#B3F4E9">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="auto"/>
