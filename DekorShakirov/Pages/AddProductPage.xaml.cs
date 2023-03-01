@@ -42,7 +42,8 @@ namespace DekorShakirov.Pages
             else
                 product = _product;
 
-            
+            tbxArticle.Text = product.Article;
+            tbxName.Text = product.Name;
         }
 
 

@@ -58,7 +58,11 @@ namespace DekorShakirov.Pages
 
         private void btnChange_Click(object sender, RoutedEventArgs e)
         {
-
+            if (lvTable.SelectedItem != null)
+            {
+                var product = lvTable.SelectedItem as Product;
+                NavigationService.Navigate(new AddProductPage(product));
+            }
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
