@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DekorShakirov.DB;
 
 namespace DekorShakirov.Pages
 {
@@ -30,7 +31,17 @@ namespace DekorShakirov.Pages
 
         private void btnEnter_Click(object sender, RoutedEventArgs e)
         {
-
+            var login = tbxLogin.Text;
+            var password = pbxPassword.Password.ToString();
+            var user = DataAccess.GetUser(login, password);
+            if (user != null)
+            {
+                NavigationService.Navigate(new Pages.ProductsPage(MW));
+            }
+            else
+            {
+                MessageBox.Show("Неверный логин или пароль");
+            }
         }
 
         private void btnEnterGuest_Click(object sender, RoutedEventArgs e)

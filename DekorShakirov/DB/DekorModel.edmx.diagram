@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bcda510244f04c778e41d0e5501d47b9" Name="Diagram1">
+        <EntityTypeShape EntityType="DekorShakirovModel.Category" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DekorShakirovModel.DeliveryPoint" Width="1.5" PointX="0.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="DekorShakirovModel.Order" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="DekorShakirovModel.Producer" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DekorShakirovModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DekorShakirovModel.ProductOrder" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DekorShakirovModel.Role" Width="1.5" PointX="1.5" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DekorShakirovModel.Supplier" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DekorShakirovModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DekorShakirovModel.Unit" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DekorShakirovModel.User" Width="1.5" PointX="0.75" PointY="15.375" IsExpanded="true" />
+        <AssociationConnector Association="DekorShakirovModel.FK_Product_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="DekorShakirovModel.FK_Order_DeliveryPoint" ManuallyRouted="false" />
+        <AssociationConnector Association="DekorShakirovModel.FK_Order_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DekorShakirovModel.FK_ProductOrder_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="DekorShakirovModel.FK_Product_Producer" ManuallyRouted="false" />
+        <AssociationConnector Association="DekorShakirovModel.FK_Product_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="DekorShakirovModel.FK_Product_Unit" ManuallyRouted="false" />
+        <AssociationConnector Association="DekorShakirovModel.FK_ProductOrder_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="DekorShakirovModel.FK_Client_Role" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,38 @@
+﻿<Page x:Class="DekorShakirov.Pages.AddProductPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DekorShakirov.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddProductPage">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Артикул: " Width="180"/>
+                <TextBox x:Name="tbxArticle" Text="{Binding Product.Article}" MinWidth="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Наименование: " Width="180"/>
+                <TextBox x:Name="tbxName" Text="{Binding Product.Name}" MinWidth="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Категория:" Width="180"/>
+                <ComboBox x:Name="cbCategory" ItemsSource="{Binding ProductCategories}"
+                      SelectedItem="{Binding Product.ProductCategory}" DisplayMemberPath="Name" Width="200"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Количество  на  складе:" Width="250"/>
+                <TextBox Text="{Binding Product.StockOnWarehouse}" Width="130"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Единица  измерения:" Width="250"/>
+                <ComboBox x:Name="cbUnit" ItemsSource="{Binding Units}"
+                      SelectedItem="{Binding Product.Unit}" DisplayMemberPath="Name" Width="130"/>
+            </StackPanel>
+            <Button x:Name="btnSave" Content="Сохранить" Click="btnSave_Click" Grid.Row="1" Grid.Column="2"/>
+        </StackPanel>
+    </Grid>
+</Page>

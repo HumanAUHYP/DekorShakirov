@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DekorShakirov.DB;
 
 namespace DekorShakirov.Pages
 {
@@ -21,8 +22,8 @@ namespace DekorShakirov.Pages
     public partial class ProductsPage : Page
     {
         MainWindow MW;
-        List<string> Products;
-        List<string> AllProducts;
+        List<Product> Products;
+        List<Product> AllProducts;
         const int ITEMONPAGE = 20;
         int pageIndex = 0;
         public ProductsPage(MainWindow mainWindow)
@@ -31,8 +32,13 @@ namespace DekorShakirov.Pages
             MW = mainWindow;
             MW.tbTitle.Text = "Таблица продуктов";
 
-            //Products = DataAccess.GetProducts();
+            Products = DataAccess.GetProducts();
             AllProducts = Products;
+            lvTable.ItemsSource = Products;
+
+            GeneratePages();
+            cbDiscount.SelectedIndex = 0;
+            cbSort.SelectedIndex = 0;
         }
 
         private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -57,7 +63,7 @@ namespace DekorShakirov.Pages
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new AddProductPage(new Product()));
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -109,12 +115,12 @@ namespace DekorShakirov.Pages
 
         private void DisplayClientsInPage()
         {
-            //var productsInPage = new List<Product>();
+            var productsInPage = new List<Product>();
             for (int i = pageIndex * ITEMONPAGE; i < (pageIndex + 1) * ITEMONPAGE; i++)
             {
                 try
                 {
-                    //productsInPage.Add(Products[i]);
+                    productsInPage.Add(Products[i]);
                 }
                 catch (Exception)
                 {
@@ -122,7 +128,7 @@ namespace DekorShakirov.Pages
                 }
 
             }
-            //lvTable.ItemsSource = productsInPage.FindAll(a => a.IsDeleted == false);
+            lvTable.ItemsSource = productsInPage;
         }
 
         private void AllFilters()
@@ -133,17 +139,19 @@ namespace DekorShakirov.Pages
 
             if (search != "")
             {
-                //Products = Products.FindAll(a => a.Name.ToLower().Contains(search));
+                Products = Products.FindAll(a => a.Name.ToLower().Contains(search));
             }
             var sort = cbSort.SelectedItem as TextBlock;
-            //if (sort == tbCostSort) Products.OrderBy(a => a.Cost);
-            //else if (sort == tbCostDescSort) Products.OrderByDescending(a => a.Cost);
+            if (sort == tbCostSort) Products.OrderBy(a => a.Price);
+            else if (sort == tbCostDescSort) Products.OrderByDescending(a => a.Price);
 
             var discount = cbDiscount.SelectedItem as TextBlock;
 
-            //if (discount == tb0_10) Products = Products.FindAll(a => a.Discount < 11);
-            //else if (discount == tb11_14) Products = Products.FindAll(a => a.Discount > 10 && a.Discount < 15);
-            //else if (discount == tb15) Products = Products.FindAll(a => a.Discount >= 15);
+            if (discount == tb0_10) Products = Products.FindAll(a => a.MaxDiscount < 11);
+            else if (discount == tb11_14) Products = Products.FindAll(a => a.MaxDiscount > 10 && a.MaxDiscount < 15);
+            else if (discount == tb15) Products = Products.FindAll(a => a.MaxDiscount >= 15);
+
+            GeneratePages();
         }
     }
 }

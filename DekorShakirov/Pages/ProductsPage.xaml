@@ -43,14 +43,20 @@
                     <Border Margin="10" Padding="10" BorderBrush="Black" BorderThickness="1">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition/>
-                                <ColumnDefinition Width="180"/>
+                                <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
 
-                            <Image Height="150">
+                            <Image Width="200" Height="200" Grid.RowSpan="4">
                                 <Image.Source>
-                                    <Binding Path="PhotoPath">
+                                    <Binding Path="Image">
                                         <Binding.TargetNullValue>
                                             <ImageSource>../Images/picture.png</ImageSource>
                                         </Binding.TargetNullValue>
@@ -58,20 +64,15 @@
                                 </Image.Source>
                             </Image>
 
-                            <StackPanel Grid.Column="1" Margin="30">
-                                <!--Наименование товара-->
-                                <TextBlock Text="{Binding Title}"/>
-                                <TextBlock Text="{Binding Description}"/>
-                                <TextBlock>
-                                    <Run Text="Производитель:"/>
-                                    <Run Text="{Binding Производитель}"/>
-                                </TextBlock>
-                                <TextBlock>
-                                    <Run Text="Цена:"/>
-                                    <Run Text="{Binding Cost}"/>
-                                </TextBlock>
-                            </StackPanel>
-                            <TextBlock Grid.Column="2" Text="{Binding размер_скидки}"/>
+                            <TextBlock Text="{Binding Name}" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Description}" Grid.Column="1" Grid.Row="1"/>
+                            <TextBlock Text="{Binding Manufacturer.Name}" Grid.Column="1" Grid.Row="2"/>
+                            <TextBlock Text="{Binding Price}" Grid.Column="1" Grid.Row="3"/>
+
+                            <TextBlock  HorizontalAlignment="Right" Grid.Row="1" Grid.Column="2" >
+                                <Run Text="{Binding MaxDiscount}"/>
+                                <Run Text="%"/>
+                            </TextBlock>
                         </Grid>
                     </Border>
                 </DataTemplate>
